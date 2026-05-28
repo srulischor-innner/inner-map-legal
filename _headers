@@ -1,0 +1,15 @@
+# Cloudflare Pages headers config.
+# Docs: https://developers.cloudflare.com/pages/configuration/headers/
+#
+# Universal-link / App-link discovery requires both .well-known files
+# to be served as application/json. Cloudflare Pages doesn't infer the
+# content-type for extension-less files (apple-app-site-association
+# has no extension by Apple's spec), so we set it explicitly here.
+# Without this header, iOS rejects the AASA file and Universal Links
+# silently fail to register.
+
+/.well-known/apple-app-site-association
+  Content-Type: application/json
+
+/.well-known/assetlinks.json
+  Content-Type: application/json

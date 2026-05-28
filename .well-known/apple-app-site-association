@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["REPLACE_WITH_APPLE_TEAM_ID.com.srulischor.innermap"],
+        "components": [
+          {
+            "/": "/auth/*",
+            "comment": "Magic-link sign-in. Routes /auth/email?token=… into the app."
+          }
+        ]
+      }
+    ]
+  }
+}
