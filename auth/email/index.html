@@ -125,7 +125,8 @@
   var qs = (typeof URLSearchParams !== 'undefined')
     ? new URLSearchParams(window.location.search)
     : null;
-  var token = qs ? (qs.get('token') || '').trim() : '';
+  var token  = qs ? (qs.get('token')  || '').trim() : '';
+  var source = qs ? (qs.get('source') || '').trim() : '';
 
   var statusText = document.getElementById('status-text');
   var spinner    = document.getElementById('spinner');
@@ -141,6 +142,30 @@
     return;
   }
 
+  // WEB BRANCH (Build 13). When the magic link was requested from the
+  // browser-based SPA (POST /api/auth/email/request body source:"web"),
+  // the email URL has &source=web. We redirect the user back to the
+  // web app's host with the token in a query param. The SPA's load-
+  // time handler picks the token up, calls /api/auth/sign-in, and
+  // links the user's anonymous UUID (sent via the existing
+  // innerMapUserId cookie) to the email identity — the exact same
+  // migration path the native app uses on first sign-in.
+  if (source === 'web') {
+    // Hard-coded host because Cloudflare Pages can't reach process.env.
+    // If the web app ever moves, update both this line and the
+    // matching server-side defense-in-depth route (server.js GET
+    // /auth/email).
+    var webHost = 'https://inner-map-production.up.railway.app';
+    var target  = webHost + '/?auth_token=' + encodeURIComponent(token);
+    spinner.style.display = 'none';
+    statusText.textContent = 'Signing you in…';
+    // top-level navigation; the SPA will load with the auth_token
+    // param in its URL.
+    window.location.replace(target);
+    return;
+  }
+
+  // MOBILE BRANCH (default — no source or source!="web").
   // Custom-scheme deep link. The native app's intent filter for
   // scheme="innermap" + host="auth" routes this to the deep-link
   // handler in app/_layout.tsx (consumeAuthEmailUrl). The token
