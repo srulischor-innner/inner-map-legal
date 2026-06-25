@@ -52,14 +52,14 @@
 
 <h1>Inner Map Privacy Policy</h1>
 <p class="meta"><strong>Effective Date:</strong> May 19, 2026<br>
-<strong>Last Updated:</strong> May 19, 2026</p>
+<strong>Last Updated:</strong> June 25, 2026</p>
 
 <hr>
 
 <h2>Five things we want you to know</h2>
 <p>Before the legal version, here's the short version. Everything below this section is more detail on the same five points.</p>
 <ol>
-  <li><strong>Your inner work is private.</strong> Your journal entries stay on your phone, encrypted. We genuinely cannot read them.</li>
+  <li><strong>Your inner work is yours to control.</strong> You decide, per journal entry, whether to share it with the AI or keep it private. Private entries stay encrypted on your phone &mdash; we genuinely cannot read them.</li>
   <li><strong>We don't sell your data, run ads, or share with marketers.</strong> Not now, not ever. This isn't a policy we'll quietly change later &mdash; it's the reason we built Inner Map.</li>
   <li><strong>The AI providers we use don't train on your conversations.</strong> Anthropic (for chat) and OpenAI (for voice and transcription) process your conversations to generate replies and then don't retain them. We don't use your data to train any model either.</li>
   <li><strong>You can export everything we have on you, or delete your account, at any time.</strong> Deletion is real &mdash; not soft-deleted, actually deleted from our servers and your device.</li>
@@ -105,7 +105,7 @@
   <li><strong>Display name (optional).</strong> A name or nickname you can set for use in the app and in any relationship features. Doesn't need to be your real name.</li>
   <li><strong>Conversation content.</strong> What you write or say in chat with the AI. Used to generate replies and to maintain context across sessions.</li>
   <li><strong>Inner-experience map data.</strong> The parts, patterns, and inner-experience structure you map out with the AI's help. This is your work product, and we store it so you can return to it across sessions.</li>
-  <li><strong>Journal entries.</strong> Stored only on your device, encrypted. We do not have copies on our servers.</li>
+  <li><strong>Journal entries.</strong> You choose per entry. Entries you keep <em>private</em> are stored only on your device, encrypted &mdash; we have no copy on our servers. Entries you choose to <em>share</em> with the AI are stored on our servers (like your conversation content) so the AI can draw on them as context.</li>
 </ul>
 
 <h3>Information collected automatically</h3>
@@ -157,7 +157,8 @@
     <tr><td>Display name (optional)</td><td>To personalize the experience and surface to a connected partner</td><td>Consent</td></tr>
     <tr><td>Conversation content</td><td>To generate AI replies and maintain session context</td><td>Contract performance</td></tr>
     <tr><td>Inner-experience map data</td><td>To persist your work across sessions</td><td>Contract performance</td></tr>
-    <tr><td>Journal entries</td><td>Stored locally to enable journaling features</td><td>Contract performance (no server processing)</td></tr>
+    <tr><td>Private journal entries</td><td>Stored locally on your device to enable journaling</td><td>Contract performance (no server processing)</td></tr>
+    <tr><td>Shared journal entries</td><td>Stored on our servers and provided to the AI as context, when you choose to share an entry</td><td>Contract performance</td></tr>
     <tr><td>Usage counters</td><td>To enforce rate limits and prevent abuse</td><td>Legitimate interest in service stability</td></tr>
     <tr><td>Device type / OS / version</td><td>For crash diagnostics and compatibility</td><td>Legitimate interest in service quality</td></tr>
     <tr><td>Approximate timezone</td><td>For time-of-day features</td><td>Contract performance</td></tr>
@@ -192,6 +193,9 @@
   <li>Transcripts pass through Whisper but are not stored by OpenAI beyond the API call.</li>
 </ul>
 
+<h3>Journal entries you share</h3>
+<p>When you mark a journal entry as shared, its text is included in the context sent to Anthropic (for chat) so the AI can draw on it &mdash; handled exactly like your conversation content above: not used to train any model, and not retained by Anthropic beyond its standard operational window. Journal entries you keep private are never transmitted to Anthropic, OpenAI, or any other third party.</p>
+
 <h3>What we do with the AI provider relationship</h3>
 <ul>
   <li>We have contractual agreements with both providers requiring them to handle your data only for the purposes of fulfilling our API requests.</li>
@@ -212,16 +216,17 @@
 
 <h3>On your device (encrypted, never transmitted to us)</h3>
 <ul>
-  <li>Your journal entries, encrypted using AES-256</li>
+  <li>Your private journal entries (those you haven't shared with the AI), encrypted using AES-256</li>
   <li>Your cached chat history (for offline reading)</li>
   <li>Your locally-stored preferences</li>
 </ul>
-<p>The encryption key is generated on your device at first launch and stored in your phone's secure keystore (Apple Keychain on iOS, Android Keystore on Android). The key never leaves your device. We do not have access to it. We cannot decrypt your journal entries even if compelled to do so.</p>
+<p>The encryption key is generated on your device at first launch and stored in your phone's secure keystore (Apple Keychain on iOS, Android Keystore on Android). The key never leaves your device. We do not have access to it. We cannot decrypt your private journal entries even if compelled to do so. (Entries you choose to share with the AI are stored on our servers instead &mdash; see the "On our servers" section below.)</p>
 
 <h3>On our servers (encrypted at rest)</h3>
 <ul>
   <li>Your account record</li>
   <li>Your conversation history (used for AI context)</li>
+  <li>Your shared journal entries &mdash; only those you explicitly choose to share with the AI (private entries never reach our servers)</li>
   <li>Your inner-experience map data (parts, wounds, patterns)</li>
   <li>Your relationship records (if you use the relationship feature)</li>
   <li>Usage counters</li>
@@ -239,7 +244,7 @@
 <p>We've designed Inner Map with security-by-design and privacy-by-design principles. Specific measures include:</p>
 <ul>
   <li><strong>Encryption in transit:</strong> All API calls and WebSocket connections use TLS 1.2+ encryption.</li>
-  <li><strong>Encryption at rest:</strong> Server-side database is encrypted at rest (AES-256). Local journal entries are encrypted at rest on your device (AES-256).</li>
+  <li><strong>Encryption at rest:</strong> Server-side database is encrypted at rest (AES-256). Private journal entries are encrypted at rest on your device (AES-256); journal entries you share with the AI are stored in the server database, encrypted at rest like your other server data.</li>
   <li><strong>Authentication required:</strong> All API endpoints require authentication. Unauthenticated requests are rejected.</li>
   <li><strong>Rate limiting:</strong> Multiple layers of rate limits prevent abuse of API endpoints (per-user daily caps on chat messages, voice sessions, transcriptions, and data exports).</li>
   <li><strong>Anti-brute-force:</strong> Invite code endpoints have failure-rate limits.</li>
@@ -258,7 +263,7 @@
 <ul>
   <li><strong>Account data and inner-experience map:</strong> Kept while your account is active. Deleted within 30 days of account deletion.</li>
   <li><strong>Conversation history:</strong> Kept while your account is active. Used for AI session memory.</li>
-  <li><strong>Journal entries:</strong> Stored only on your device. We have no copies and cannot retrieve them after they're deleted from your phone.</li>
+  <li><strong>Private journal entries:</strong> Stored only on your device. We have no copies and cannot retrieve them after they're deleted from your phone. <strong>Shared journal entries:</strong> Kept on our servers while your account is active (like your conversation history), deleted immediately when you delete the entry, and within 30 days of account deletion.</li>
   <li><strong>Usage counters:</strong> Retained for up to 90 days for rate-limiting purposes, then aggregated or deleted.</li>
   <li><strong>Database backups:</strong> Retained for up to 30 days per our hosting provider's standard practices, then purged.</li>
 </ul>
@@ -273,7 +278,7 @@
 <p>You can request a copy of all the data we hold about you on our servers. The app has a built-in export function: <strong>Settings &rarr; Privacy &rarr; Export My Data.</strong> The export is delivered as a JSON file via your phone's share sheet (so you can save it to Files, send it to yourself via email, etc.).</p>
 
 <h3>Deletion</h3>
-<p>You can delete your entire account from within the app: <strong>Settings &rarr; Privacy &rarr; Delete My Account.</strong> This removes your data from our active systems immediately. It cascades to all related tables &mdash; sessions, parts, journal references, relationship data &mdash; and triggers your device to clear local encrypted storage.</p>
+<p>You can delete your entire account from within the app: <strong>Settings &rarr; Privacy &rarr; Delete My Account.</strong> This removes your data from our active systems immediately. It cascades to all related tables &mdash; sessions, parts, journal entries (including any you shared with the AI) and their embeddings, relationship data &mdash; and triggers your device to clear local encrypted storage.</p>
 <p>Deletion is permanent. We cannot restore an account once deleted.</p>
 
 <h3>Correction</h3>
