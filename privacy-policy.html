@@ -52,7 +52,7 @@
 
 <h1>Inner Map Privacy Policy</h1>
 <p class="meta"><strong>Effective Date:</strong> May 19, 2026<br>
-<strong>Last Updated:</strong> June 25, 2026</p>
+<strong>Last Updated:</strong> July 1, 2026</p>
 
 <hr>
 
@@ -61,7 +61,7 @@
 <ol>
   <li><strong>Your inner work is yours to control.</strong> You decide, per journal entry, whether to share it with the AI or keep it private. Private entries stay encrypted on your phone &mdash; we genuinely cannot read them.</li>
   <li><strong>We don't sell your data, run ads, or share with marketers.</strong> Not now, not ever. This isn't a policy we'll quietly change later &mdash; it's the reason we built Inner Map.</li>
-  <li><strong>The AI providers we use don't train on your conversations.</strong> Anthropic (for chat) and OpenAI (for voice and transcription) process your conversations to generate replies and then don't retain them. We don't use your data to train any model either.</li>
+  <li><strong>The AI providers we use don't train on your conversations.</strong> Anthropic (for chat) and OpenAI (for transcription, spoken audio, and the app's memory) process your data to power those features and then don't retain it. We don't use your data to train any model either.</li>
   <li><strong>You can export everything we have on you, or delete your account, at any time.</strong> Deletion is real &mdash; not soft-deleted, actually deleted from our servers and your device.</li>
   <li><strong>Inner Map is a reflection tool, not therapy or medical care.</strong> If you're in crisis, please reach out: 988 (US), Samaritans 116 123 (UK), or findahelpline.com (international).</li>
 </ol>
@@ -136,7 +136,7 @@
   <li>We do <strong>not</strong> access your camera or photo library.</li>
   <li>We do <strong>not</strong> track your location.</li>
   <li>We do <strong>not</strong> access your microphone except when you explicitly initiate a voice note or voice session.</li>
-  <li>We do <strong>not</strong> use third-party analytics SDKs that track behavior across apps.</li>
+  <li>We do <strong>not</strong> use analytics that track you across other apps or websites.</li>
   <li>We do <strong>not</strong> use advertising networks.</li>
   <li>We do <strong>not</strong> integrate with social media platforms.</li>
   <li>We do <strong>not</strong> retain voice recordings &mdash; they are processed for transcription and discarded.</li>
@@ -158,8 +158,9 @@
     <tr><td>Conversation content</td><td>To generate AI replies and maintain session context</td><td>Contract performance</td></tr>
     <tr><td>Inner-experience map data</td><td>To persist your work across sessions</td><td>Contract performance</td></tr>
     <tr><td>Private journal entries</td><td>Stored locally on your device to enable journaling</td><td>Contract performance (no server processing)</td></tr>
-    <tr><td>Shared journal entries</td><td>Stored on our servers and provided to the AI as context, when you choose to share an entry</td><td>Contract performance</td></tr>
+    <tr><td>Shared journal entries</td><td>Stored on our servers, provided to the AI as context, and analyzed for optional map suggestions you approve &mdash; when you choose to share an entry</td><td>Contract performance</td></tr>
     <tr><td>Usage counters</td><td>To enforce rate limits and prevent abuse</td><td>Legitimate interest in service stability</td></tr>
+    <tr><td>Product usage events</td><td>To understand which features are used and improve the app (via PostHog; never includes your content)</td><td>Legitimate interest in service improvement</td></tr>
     <tr><td>Device type / OS / version</td><td>For crash diagnostics and compatibility</td><td>Legitimate interest in service quality</td></tr>
     <tr><td>Approximate timezone</td><td>For time-of-day features</td><td>Contract performance</td></tr>
   </tbody>
@@ -171,11 +172,13 @@
   <li>Training AI models (ours or anyone else's)</li>
   <li>Profiling for any purpose beyond what you'd reasonably expect from the app's stated functionality</li>
 </ul>
+<p><strong>Product analytics.</strong> We use PostHog to understand how the app is used &mdash; which features people open, and when sessions happen &mdash; so we can improve it. These are usage events only: we never send PostHog the content of your conversations, journal entries, messages, or the parts and beliefs on your map. PostHog is not used for advertising, and it does not track you across other apps or websites.</p>
+<p><strong>Crash reporting.</strong> We use Sentry to capture crash and error reports so we can find and fix problems. These contain technical diagnostics only &mdash; the error type, a stack trace, and your device model and OS version. They are configured to exclude your content: no conversations, journal entries, messages, or map data, and no network request contents. Sentry is not used for advertising.</p>
 
 <hr>
 
 <h2>How we use AI</h2>
-<p>Inner Map uses two AI service providers:</p>
+<p>Inner Map uses these third-party providers to power its AI and voice features:</p>
 
 <h3>Anthropic (for chat)</h3>
 <p>Your text-based conversations are sent to Anthropic's API to generate AI replies. Per Anthropic's API terms:</p>
@@ -185,20 +188,22 @@
   <li>Anthropic does not share your data with other Anthropic customers.</li>
 </ul>
 
-<h3>OpenAI (for voice and transcription)</h3>
-<p>Your voice sessions and voice notes are processed by OpenAI's Realtime API and Whisper API for transcription and conversational replies. Per OpenAI's API terms for paid tiers:</p>
+<h3>OpenAI (for transcription, spoken audio, and memory)</h3>
+<p>We use OpenAI for three things: transcribing your voice notes into text, generating spoken audio (such as the &ldquo;hear this spoken&rdquo; feature), and creating the embeddings that power the app's memory. Embeddings are numeric representations of text that let the app find and recall relevant past context; to build them, the text of your chat messages, the AI's replies, session summaries, and any journal entries you have shared is sent to OpenAI's embeddings API. (Journal entries you keep private are never sent &mdash; see below.) Per OpenAI's API terms for paid tiers:</p>
 <ul>
   <li>Customer data is <strong>not used to train OpenAI's models</strong>.</li>
-  <li>Voice audio is processed transiently and is not retained.</li>
-  <li>Transcripts pass through Whisper but are not stored by OpenAI beyond the API call.</li>
+  <li>Audio and text are processed transiently to fulfill the request and are not retained by OpenAI beyond the API call.</li>
 </ul>
 
+<h3>Voice conversation providers</h3>
+<p>The live voice feature (Map Voice) turns your speech into text and speaks a reply back. To do this, the audio of what you say is sent to a speech-to-text provider (Cartesia), and the text of the reply is sent to a text-to-speech provider (ElevenLabs) to generate the audio you hear. These providers process that audio or text to perform the conversion; the reply itself is written by Anthropic as described above. We do not use these providers for advertising.</p>
+
 <h3>Journal entries you share</h3>
-<p>When you mark a journal entry as shared, its text is included in the context sent to Anthropic (for chat) so the AI can draw on it &mdash; handled exactly like your conversation content above: not used to train any model, and not retained by Anthropic beyond its standard operational window. Journal entries you keep private are never transmitted to Anthropic, OpenAI, or any other third party.</p>
+<p>When you mark a journal entry as shared, its text is included in the context sent to Anthropic (for chat) so the AI can draw on it &mdash; handled exactly like your conversation content above: not used to train any model, and not retained by Anthropic beyond its standard operational window. A shared entry is also analyzed by AI to see whether it suggests anything worth adding to your inner map; any such suggestion is sent to your in-app inbox for you to accept, edit, or decline, and nothing is added to your map automatically. (Shared entries are also embedded for memory, as described under OpenAI above.) Journal entries you keep private are never transmitted to Anthropic, OpenAI, or any other third party &mdash; they are not analyzed, embedded, or sent anywhere.</p>
 
 <h3>What we do with the AI provider relationship</h3>
 <ul>
-  <li>We have contractual agreements with both providers requiring them to handle your data only for the purposes of fulfilling our API requests.</li>
+  <li>We have contractual agreements with these providers requiring them to handle your data only for the purposes of fulfilling our API requests.</li>
   <li>We do not have any agreements with these providers that allow them to use your data for any other purpose.</li>
   <li>We monitor our own usage to ensure we're not inadvertently sending more data than necessary to fulfill each request.</li>
 </ul>
