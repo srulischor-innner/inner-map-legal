@@ -52,7 +52,7 @@
 
 <h1>Inner Map Privacy Policy</h1>
 <p class="meta"><strong>Effective Date:</strong> May 19, 2026<br>
-<strong>Last Updated:</strong> July 1, 2026</p>
+<strong>Last Updated:</strong> July 3, 2026</p>
 
 <hr>
 
@@ -62,7 +62,7 @@
   <li><strong>Your inner work is yours to control.</strong> You decide, per journal entry, whether to share it with the AI or keep it private. Private entries stay encrypted on your phone &mdash; we genuinely cannot read them.</li>
   <li><strong>We don't sell your data, run ads, or share with marketers.</strong> Not now, not ever. This isn't a policy we'll quietly change later &mdash; it's the reason we built Inner Map.</li>
   <li><strong>The AI providers we use don't train on your conversations.</strong> Anthropic (for chat) and OpenAI (for transcription, spoken audio, and the app's memory) process your data to power those features and then don't retain it. We don't use your data to train any model either.</li>
-  <li><strong>You can export everything we have on you, or delete your account, at any time.</strong> Deletion is real &mdash; not soft-deleted, actually deleted from our servers and your device.</li>
+  <li><strong>You can export your data, or delete your account, at any time.</strong> Deletion is real &mdash; not soft-deleted, actually deleted from our servers and your device.</li>
   <li><strong>Inner Map is a reflection tool, not therapy or medical care.</strong> If you're in crisis, please reach out: 988 (US), Samaritans 116 123 (UK), or findahelpline.com (international).</li>
 </ol>
 <p>The rest of this policy fills in the detail.</p>
@@ -101,7 +101,7 @@
 <h3>Information you provide</h3>
 <ul>
   <li><strong>Account identifier.</strong> A unique user ID generated when you first install the app. This ID isn't tied to your real name or any external account by default.</li>
-  <li><strong>Email address (optional).</strong> Only required if you want to use the relationship feature (so we can route invites). Otherwise optional.</li>
+  <li><strong>Sign-in identity (optional).</strong> You can use Inner Map without signing in. If you choose to sign in, we collect what's needed to recognize you: for email sign-in, your email address (we send a one-time sign-in link to it); for Apple or Google sign-in, the account reference the provider gives us and, where you share it, the email on that account. We use this to sign you in, link your account across devices, and help you recover it. An email address is also used to route invites if you use the relationship feature. We never use it for marketing.</li>
   <li><strong>Display name (optional).</strong> A name or nickname you can set for use in the app and in any relationship features. Doesn't need to be your real name.</li>
   <li><strong>Conversation content.</strong> What you write or say in chat with the AI. Used to generate replies and to maintain context across sessions.</li>
   <li><strong>Inner-experience map data.</strong> The parts, patterns, and inner-experience structure you map out with the AI's help. This is your work product, and we store it so you can return to it across sessions.</li>
@@ -114,6 +114,7 @@
   <li><strong>Device type and operating system.</strong> For compatibility and crash diagnostics.</li>
   <li><strong>App version.</strong> To know which version of the app you're using.</li>
   <li><strong>Approximate timezone.</strong> For features that depend on local time (daily check-ins, etc.).</li>
+  <li><strong>Device push token (opt-in, off by default).</strong> Only if you turn notifications on (Settings &rarr; &ldquo;Notify me when something's waiting&rdquo;), your device gives us a push token &mdash; an identifier that lets us deliver notifications to your phone. The notification itself never contains your content: it is a fixed message (&ldquo;Something is waiting in your inbox&rdquo;) with no conversation, journal, or map material in it, even in hidden data fields. If you turn notifications off, we delete the token.</li>
 </ul>
 
 <h3>Information from third parties</h3>
@@ -153,7 +154,7 @@
   </thead>
   <tbody>
     <tr><td>Account identifier</td><td>To recognize you across sessions and tie your map to your account</td><td>Contract performance</td></tr>
-    <tr><td>Email (optional)</td><td>To deliver relationship invites</td><td>Consent</td></tr>
+    <tr><td>Sign-in identity &amp; email (optional)</td><td>To sign you in, link your account across devices, help you recover it, and deliver relationship invites</td><td>Contract performance (sign-in); consent (invites)</td></tr>
     <tr><td>Display name (optional)</td><td>To personalize the experience and surface to a connected partner</td><td>Consent</td></tr>
     <tr><td>Conversation content</td><td>To generate AI replies and maintain session context</td><td>Contract performance</td></tr>
     <tr><td>Inner-experience map data</td><td>To persist your work across sessions</td><td>Contract performance</td></tr>
@@ -163,6 +164,7 @@
     <tr><td>Product usage events</td><td>To understand which features are used and improve the app (via PostHog; never includes your content)</td><td>Legitimate interest in service improvement</td></tr>
     <tr><td>Device type / OS / version</td><td>For crash diagnostics and compatibility</td><td>Legitimate interest in service quality</td></tr>
     <tr><td>Approximate timezone</td><td>For time-of-day features</td><td>Contract performance</td></tr>
+    <tr><td>Device push token (opt-in)</td><td>To deliver the notifications you turn on &mdash; the notification itself never contains your content</td><td>Consent</td></tr>
   </tbody>
 </table>
 <p>We do not use your information for:</p>
@@ -214,6 +216,18 @@
   <li>We do not provide your conversations to any third party for model training.</li>
   <li>We do not aggregate your conversations with other users' conversations for any analytical purpose that could identify you.</li>
 </ul>
+
+<hr>
+
+<h2>Other service providers</h2>
+<p>Beyond the AI providers above, a small number of services help us run Inner Map:</p>
+<ul>
+  <li><strong>Railway (hosting)</strong> &mdash; hosts our servers and database, as described under &ldquo;Where your data lives&rdquo; below.</li>
+  <li><strong>Expo, Apple, and Google (notification delivery)</strong> &mdash; if you turn notifications on, your device push token and our fixed notification message pass through Expo's push service and then Apple (APNs) or Google (FCM) to reach your phone. The message never contains your content.</li>
+  <li><strong>Resend (email delivery)</strong> &mdash; sends our sign-in emails (the one-time magic links). Your email address is shared with Resend to deliver those emails, and for nothing else.</li>
+  <li><strong>PostHog (product analytics) and Sentry (crash reporting)</strong> &mdash; described under &ldquo;How we use your information&rdquo; above. Neither ever receives the content of your conversations, journal, or map.</li>
+</ul>
+<p>Each of these providers processes data only to supply its service to us, under agreements that prohibit any other use.</p>
 
 <hr>
 
@@ -280,17 +294,18 @@
 <p>You have the following rights regarding your data:</p>
 
 <h3>Access</h3>
-<p>You can request a copy of all the data we hold about you on our servers. The app has a built-in export function: <strong>Settings &rarr; Privacy &rarr; Export My Data.</strong> The export is delivered as a JSON file via your phone's share sheet (so you can save it to Files, send it to yourself via email, etc.).</p>
+<p>You can request a copy of the data we hold about you on our servers. The app has a built-in export function: <strong>Settings &rarr; Privacy &rarr; Export My Data.</strong> The export is delivered as a JSON file via your phone's share sheet (so you can save it to Files, send it to yourself via email, etc.).</p>
+<p>The export contains your content and activity: your account and settings, conversations, inner-experience map, shared journal entries, session summaries, and usage counters. A few purely operational records are not included in the file &mdash; sign-in identity records, notification tokens, in-app inbox cards, feedback you've submitted, and the numeric memory embeddings derived from your content. If you'd like a copy of those too, email <strong>privacy@my-inner-map.com</strong> and we'll provide them. Everything &mdash; in the export file or not &mdash; is permanently removed when you delete your account.</p>
 
 <h3>Deletion</h3>
-<p>You can delete your entire account from within the app: <strong>Settings &rarr; Privacy &rarr; Delete My Account.</strong> This removes your data from our active systems immediately. It cascades to all related tables &mdash; sessions, parts, journal entries (including any you shared with the AI) and their embeddings, relationship data &mdash; and triggers your device to clear local encrypted storage.</p>
+<p>You can delete your entire account from within the app: <strong>Settings &rarr; Privacy &rarr; Delete My Account.</strong> This removes your data from our active systems immediately. It cascades to all related records &mdash; sessions, parts, journal entries (including any you shared with the AI) and their embeddings, sign-in identity, notification tokens, your in-app inbox, feedback, and relationship data &mdash; and triggers your device to clear local encrypted storage.</p>
 <p>Deletion is permanent. We cannot restore an account once deleted.</p>
 
 <h3>Correction</h3>
 <p>If something we've stored is wrong (an email address typo, for example), you can correct it via Settings, or by contacting privacy@my-inner-map.com.</p>
 
 <h3>Withdrawal of consent</h3>
-<p>If you've consented to specific uses of your data (for example, providing an email for relationship invites), you can withdraw that consent at any time by removing the relevant data from Settings.</p>
+<p>If you've consented to specific uses of your data (for example, notifications you've turned on, or an email you provided for relationship invites), you can withdraw that consent at any time by turning the feature off or removing the relevant data in Settings. Turning notifications off deletes your push token from our servers.</p>
 
 <h3>Portability</h3>
 <p>The export function described above gives you a machine-readable copy of your data so you can move it elsewhere if you choose.</p>
