@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "com.srulischor.innermap",
       "sha256_cert_fingerprints": [
-        "REPLACE_WITH_SHA256_FINGERPRINT_FROM_eas_credentials_-p_android"
+        "66:89:6A:63:6A:A0:8D:52:7C:E3:46:EB:A3:7D:CE:E7:AC:6F:A3:B5:52:21:92:CF:31:70:D4:1B:69:BF:84:17",
+        "D9:48:B8:9D:0B:6A:66:A9:37:58:46:A7:20:56:14:85:39:3A:7E:17:99:4B:6B:0E:36:DF:C3:92:49:2F:0B:BC"
       ]
     }
   }
