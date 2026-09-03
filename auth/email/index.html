@@ -142,28 +142,13 @@
     return;
   }
 
-  // WEB BRANCH (Build 13). When the magic link was requested from the
-  // browser-based SPA (POST /api/auth/email/request body source:"web"),
-  // the email URL has &source=web. We redirect the user back to the
-  // web app's host with the token in a query param. The SPA's load-
-  // time handler picks the token up, calls /api/auth/sign-in, and
-  // links the user's anonymous UUID (sent via the existing
-  // innerMapUserId cookie) to the email identity — the exact same
-  // migration path the native app uses on first sign-in.
-  if (source === 'web') {
-    // Hard-coded host because Cloudflare Pages can't reach process.env.
-    // If the web app ever moves, update both this line and the
-    // matching server-side defense-in-depth route (server.js GET
-    // /auth/email).
-    var webHost = 'https://inner-map-production.up.railway.app';
-    var target  = webHost + '/?auth_token=' + encodeURIComponent(token);
-    spinner.style.display = 'none';
-    statusText.textContent = 'Signing you in…';
-    // top-level navigation; the SPA will load with the auth_token
-    // param in its URL.
-    window.location.replace(target);
-    return;
-  }
+  // WEB BRANCH REMOVED 2026-09-02 — the web app was retired (founder ruling).
+  // It redirected ?source=web links to the Railway host with the token in a
+  // query param, for the browser SPA's load-time handler to consume. There is
+  // no SPA now, so a web-sourced link falls through to the mobile branch below,
+  // which is the right destination for every link the app still sends. The
+  // matching server-side branch (server.js GET /auth/email) was neutralised in
+  // the same change.
 
   // MOBILE BRANCH (default — no source or source!="web").
   // Custom-scheme deep link. The native app's intent filter for
