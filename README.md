@@ -20,9 +20,23 @@ Deployed via **Cloudflare Pages** to https://my-inner-map.com.
 | `.well-known/apple-app-site-association` | iOS Universal Link declaration (paths `/auth/*` route to the app silently) |
 | `.well-known/assetlinks.json` | Android App Link declaration (same role on Android) |
 | `_headers` | Cloudflare Pages config — serves both `.well-known` files as `application/json` |
+| `support.html` | Support page — the App Store requires a reachable one |
 
 The legal-document HTML files are standalone — no external CSS,
 JavaScript, fonts, or other dependencies.
+
+## Everything in this repository is published
+
+Cloudflare Pages serves this root wholesale. `_headers` sets content types
+and excludes nothing, there is no `_routes.json`, and this repository is
+public on GitHub as well. Any file committed here is readable at
+`https://my-inner-map.com/<path>` whether or not the table above lists it and
+whether or not anything links to it.
+
+This repository is for the published site only. Working notes, drafts,
+internal memos and correspondence belong in a private repository. If a file
+is not something you would hand to a stranger who typed its name into the
+address bar, it does not go here.
 
 ## Magic-link sign-in setup
 
