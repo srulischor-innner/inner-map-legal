@@ -52,22 +52,22 @@ redirects → app launches" (one extra browser flash) to "tap link →
 app opens silently". This requires filling in two production
 credentials in placeholder form:
 
-### 1. `apple-app-site-association` — replace `REPLACE_WITH_APPLE_TEAM_ID`
+### 1. `apple-app-site-association` — DONE (2026-09-15)
 
-Find the Apple Team ID:
+`appIDs` now reads `ZC33M6LPYR.com.srulischor.innermap`. The Team ID came
+off the EAS build credentials summary, which prints it as
+`Apple Team ZC33M6LPYR (Innermap LLC (Company/Organization))` — the same
+value App Store Connect shows under Membership Details → Team ID.
+
+If it ever needs re-checking:
 
 ```
 # On the build machine (must have EAS CLI installed + logged in)
 eas credentials -p ios
-
-# Look for "Apple Team ID" in the output. Format: 10 alphanumeric
-# characters, e.g. "A1B2C3D4E5".
 ```
 
-OR from App Store Connect → Membership Details → Team ID.
-
-The final `appIDs` entry must read `TEAM_ID.com.srulischor.innermap`
-(no separator other than the dot).
+The `appIDs` entry must stay `TEAM_ID.com.srulischor.innermap` — a dot
+and nothing else between the two halves.
 
 ### 2. `assetlinks.json` — replace the placeholder fingerprint
 

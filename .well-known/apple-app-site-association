@@ -3,7 +3,7 @@
     "apps": [],
     "details": [
       {
-        "appIDs": ["REPLACE_WITH_APPLE_TEAM_ID.com.srulischor.innermap"],
+        "appIDs": ["ZC33M6LPYR.com.srulischor.innermap"],
         "components": [
           {
             "/": "/auth/*",
