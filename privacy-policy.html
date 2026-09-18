@@ -159,7 +159,7 @@
     <tr><td>Conversation content</td><td>To generate AI replies and maintain session context</td><td>Contract performance</td></tr>
     <tr><td>Inner-experience map data</td><td>To persist your work across sessions</td><td>Contract performance</td></tr>
     <tr><td>Private journal entries</td><td>Stored locally on your device to enable journaling</td><td>Contract performance (no server processing)</td></tr>
-    <tr><td>Shared journal entries</td><td>Stored on our servers, provided to the AI as context, and analyzed for optional map suggestions you approve &mdash; when you choose to share an entry</td><td>Contract performance</td></tr>
+    <tr><td>Shared journal entries</td><td>Stored on our servers, provided to the AI as context, and analyzed for optional map suggestions you approve &mdash; when journal sharing is on</td><td>Contract performance</td></tr>
     <tr><td>Usage counters</td><td>To enforce rate limits and prevent abuse</td><td>Legitimate interest in service stability</td></tr>
     <tr><td>Product usage events</td><td>To understand which features are used and improve the app (via PostHog; never includes your content)</td><td>Legitimate interest in service improvement</td></tr>
     <tr><td>Device type / OS / version</td><td>For crash diagnostics and compatibility</td><td>Legitimate interest in service quality</td></tr>
@@ -239,7 +239,7 @@
   <li>Your cached chat history (for offline reading)</li>
   <li>Your locally-stored preferences</li>
 </ul>
-<p>The encryption key is generated on your device at first launch and stored in your phone's secure keystore (Apple Keychain on iOS, Android Keystore on Android). The key never leaves your device. We do not have access to it. We cannot decrypt your private journal entries even if compelled to do so. (Entries you choose to share with the AI are stored on our servers instead &mdash; see the "On our servers" section below.)</p>
+<p>The encryption key is generated on your device at first launch and stored in your phone's secure keystore (Apple Keychain on iOS, Android Keystore on Android). The key never leaves your device. We do not have access to it. We cannot decrypt your private journal entries even if compelled to do so. (Entries saved while journal sharing is on are stored on our servers instead &mdash; see the &ldquo;On our servers&rdquo; section below.)</p>
 
 <h3>On our servers (encrypted at rest)</h3>
 <ul>
@@ -263,7 +263,7 @@
 <p>We've designed Inner Map with security-by-design and privacy-by-design principles. Specific measures include:</p>
 <ul>
   <li><strong>Encryption in transit:</strong> All API calls and WebSocket connections use TLS 1.2+ encryption.</li>
-  <li><strong>Encryption at rest:</strong> Server-side database is encrypted at rest (AES-256). Private journal entries are encrypted at rest on your device (AES-256); journal entries you share with the AI are stored in the server database, encrypted at rest like your other server data.</li>
+  <li><strong>Encryption at rest:</strong> Server-side database is encrypted at rest (AES-256). Journal entries saved while sharing is off are encrypted at rest on your device (AES-256); entries saved while sharing is on are stored in the server database, encrypted at rest like your other server data.</li>
   <li><strong>Authentication required:</strong> All API endpoints require authentication. Unauthenticated requests are rejected.</li>
   <li><strong>Rate limiting:</strong> Multiple layers of rate limits prevent abuse of API endpoints (per-user daily caps on chat messages, voice sessions, transcriptions, and data exports).</li>
   <li><strong>Anti-brute-force:</strong> Invite code endpoints have failure-rate limits.</li>
