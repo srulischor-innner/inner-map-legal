@@ -25,14 +25,17 @@ Deployed via **Cloudflare Pages** to https://my-inner-map.com.
 The legal-document HTML files as authored here are standalone — no external
 CSS, JavaScript, fonts, or other dependencies.
 
-**What is SERVED is not.** Cloudflare's Scrape Shield → Email Address
-Obfuscation rewrites every contact address in the delivered HTML to
-`[email protected]` and injects
-`/cdn-cgi/scripts/.../email-decode.min.js` to put them back. So the privacy
-policy executes a third-party script, and `privacy@my-inner-map.com` — the
-address a data subject needs to exercise a GDPR right — is unreadable without
-JavaScript. Turning that setting off is the fix; until it is off, do not claim
-anywhere that these pages carry no third-party script. Check with:
+**And as of 2026-10-14 the SERVED pages are standalone too** — verified, not
+assumed: zero `<script>` tags of any kind, zero `/cdn-cgi/` references, and all
+four contact addresses rendering as readable text.
+
+This was not true until that date. Cloudflare's Scrape Shield → Email Address
+Obfuscation had been rewriting every contact address in the delivered HTML to
+`[email protected]` and injecting `/cdn-cgi/scripts/.../email-decode.min.js` to
+put them back — so the privacy policy executed a third-party script, and
+`privacy@my-inner-map.com`, the address a data subject needs to exercise a GDPR
+right, was unreadable without JavaScript. That setting is now off. **If anyone
+ever turns it back on, the standalone claim above goes false again.** Check with:
 
     curl -sL https://my-inner-map.com/privacy-policy.html | grep -c email-decode
 
