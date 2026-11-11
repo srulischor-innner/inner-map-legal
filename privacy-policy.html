@@ -96,6 +96,8 @@
   <li>Display name (required). A name or nickname, set during signup, used to address you in the app. It doesn't need to be your real name.</li>
   <li>What you tell us when you set up. During onboarding the app asks what brings you to Inner Map and what you'd like to work on, and offers optional questions about your gender, relationship status and profession. What you answer is stored with your account and is given to the AI as context, so that it isn't starting from nothing. Every one of those questions except your name can be skipped.</li>
   <li>Conversation content. What you write or say in chat with the AI. Used to generate replies and to maintain context across sessions. When a conversation goes quiet, the app writes a short record of it: a summary you can see, and a brief note for the AI that it reads at the start of your next conversation. Both are stored with that conversation, included in your data export, and deleted with your account.</li>
+  <li>Files you share. If you share a photo, screenshot, PDF or document in a conversation, it is sent to our server and to Anthropic so the text in it can be read; for a photo with no text, a one-sentence description is written instead. The file itself is not kept. The text read from it is stored with that conversation, shown to you in the chat, included in your data export, and deleted with your account or when you remove it from the conversation. It is not sent to OpenAI and is not added to the app's memory, so later conversations don't recall it.</li>
+  <li>Health documents. If you share a medical record, a clinician's letter, a test result, a prescription, or anything else about your health, it is health information: special-category data under the GDPR, and consumer health data under some US state laws. We process it only because you chose to share it, on the basis of your explicit consent, and only to reply to you in that conversation. The AI is instructed not to interpret a diagnosis, comment on treatment or medication, second-guess your clinician, or pronounce on anyone named in the document. Inner Map is not a medical service and does not review, verify or store your records beyond the text read from what you share. A document about you may also be about other people; please share only what you are comfortable with.</li>
   <li>Inner-experience map data. The parts, patterns, and inner-experience structure you map out with the AI's help. This is your work product, and we store it so you can return to it across sessions.</li>
   <li>Safety-check records. The app checks what you write for signs that you may be in crisis, so it can show you support resources. When that check acts, we record that it acted, what was shown, and a short note the AI wrote about why — not the message that triggered it. The records of what we showed you are included in your data export, and all of them are deleted with your account.</li>
   <li>Journal entries. A setting in Settings controls whether your entries are shared with the AI. It is on by default, and you can turn it off at any time. While it is on, entries are stored on our servers, like your conversation content, as well as on your device, so the AI can draw on them as context. While it is off, entries are stored only on your device, encrypted, and we have no copy. Changing the setting affects new entries; entries already saved keep the state they were saved with.</li>
@@ -122,16 +124,17 @@
 <ul>
   <li>We do not collect phone numbers.</li>
   <li>We do not collect physical addresses.</li>
-  <li>We do not collect government IDs.</li>
+  <li>We do not ask for government IDs. Please don't share one in a file; if you do, the text read from it is kept with that conversation like anything else you share.</li>
   <li>We do not collect dates of birth.</li>
   <li>We do not access your contacts.</li>
-  <li>We do not access your camera or photo library.</li>
+  <li>We do not access your camera. We open your photo library or your files only when you tap + to share something in a conversation, and only the item you choose is read.</li>
   <li>We do not track your location.</li>
   <li>We do not access your microphone except when you explicitly initiate a voice note or voice session.</li>
   <li>We do not use analytics that track you across other apps or websites.</li>
   <li>We do not use advertising networks.</li>
   <li>We do not integrate with social media platforms.</li>
   <li>We do not retain voice recordings — they are processed for transcription and discarded.</li>
+  <li>We do not keep the files you share. A photo, screenshot, PDF or document is read when you send it and then discarded, on our servers and on your phone; only the text read from it is kept.</li>
 </ul>
 <p>If we ever begin collecting any of the above, we will update this policy and notify you in-app before the change takes effect.</p>
 <hr>
@@ -145,6 +148,7 @@
 <tr><td>Display name</td><td>To address you in the app</td><td>Contract performance</td></tr>
 <tr><td>What you tell us when you set up</td><td>To give the AI context so it isn't starting from nothing</td><td>Contract performance; explicit consent (health)</td></tr>
 <tr><td>Conversation content</td><td>To generate AI replies and maintain session context</td><td>Contract performance; explicit consent (health)</td></tr>
+<tr><td>Files you share, and the text read from them</td><td>To read the file you chose to share, and reply to you about it in that conversation</td><td>Contract performance; explicit consent (health)</td></tr>
 <tr><td>Inner-experience map data</td><td>To persist your work across sessions</td><td>Contract performance; explicit consent (health)</td></tr>
 <tr><td>Private journal entries</td><td>Stored on your device to enable journaling</td><td>Contract performance (no server processing)</td></tr>
 <tr><td>Shared journal entries</td><td>Stored on our servers, provided to the AI as context, and analyzed for optional map suggestions you approve — when your journal is set to share</td><td>Contract performance; explicit consent (health)</td></tr>
@@ -173,14 +177,14 @@
 <h2>How we use AI</h2>
 <p>Inner Map relies on third-party providers to power its AI and voice features. While these providers may change over time as we improve the Service, they currently include, but are not limited to:</p>
 <h3>Anthropic (for chat)</h3>
-<p>Your text-based conversations are sent to Anthropic's API to generate AI replies. What is sent is not only the message you just typed: it includes the recent conversation, the relevant parts of your inner-experience map, any journal entries you have shared, and the past material the app has retrieved as context. Per Anthropic's API terms:</p>
+<p>Your text-based conversations are sent to Anthropic's API to generate AI replies. When you share a file, Anthropic also receives the file once, so its text can be read, and the text read from it with each message in that conversation. What is sent is not only the message you just typed: it includes the recent conversation, the relevant parts of your inner-experience map, any journal entries you have shared, and the past material the app has retrieved as context. Per Anthropic's API terms:</p>
 <ul>
   <li>Customer data (your conversations) is not used to train Anthropic's models.</li>
   <li>Data is processed transiently to fulfill the API request and is not retained by Anthropic beyond standard operational retention windows (typically up to 30 days for abuse monitoring, per Anthropic's data policy).</li>
   <li>Anthropic does not share your data with other Anthropic customers.</li>
 </ul>
 <h3>OpenAI (for transcription, spoken audio, and memory)</h3>
-<p>We use OpenAI for three things: transcribing your voice notes into text, generating spoken audio (such as the "hear this spoken" feature), and creating the embeddings that power the app's memory. Embeddings are numeric representations of text that let the app find and recall relevant past context; to build them, the text of your chat messages, the AI's replies, session summaries, and any journal entries you have shared is sent to OpenAI's embeddings API. (Journal entries you keep private are never sent — see below.) Per OpenAI's API terms for paid tiers:</p>
+<p>We use OpenAI for three things: transcribing your voice notes into text, generating spoken audio (such as the "hear this spoken" feature), and creating the embeddings that power the app's memory. Embeddings are numeric representations of text that let the app find and recall relevant past context; to build them, the text of your chat messages, the AI's replies, session summaries, and any journal entries you have shared is sent to OpenAI's embeddings API. (Journal entries you keep private are never sent — see below.) Files you share, and the text read from them, are never sent to OpenAI. Per OpenAI's API terms for paid tiers:</p>
 <ul>
   <li>Customer data is not used to train OpenAI's models.</li>
   <li>Audio and text are processed transiently to fulfill the request and are not retained by OpenAI beyond the API call.</li>
@@ -274,6 +278,7 @@
 <ul>
   <li>Account data and inner-experience map: Kept while your account is active. Deleted within 30 days of account deletion.</li>
   <li>Conversation history: Kept while your account is active. Used for AI session memory.</li>
+  <li>Files you share: Not kept; discarded as soon as they have been read. Text read from a file: kept with that conversation while your account is active, or until you remove it, and deleted within 30 days of account deletion.</li>
   <li>Private journal entries: Stored on your device. We have no copies and cannot retrieve them after they're deleted from your phone.</li>
   <li>Shared journal entries: Kept on our servers while your account is active (like your conversation history), deleted immediately when you delete the entry, and within 30 days of account deletion.</li>
   <li>Usage counters: Kept for as long as your account exists. They are what the app uses for rate limits, abuse prevention and your monthly allowance, and they are deleted with your account.</li>
@@ -348,6 +353,7 @@
   <li>Right not to be subject to automated decision-making or profiling</li>
 </ul>
 <p>Special categories of data. Conversations in Inner Map are likely to concern your mental and emotional health, which is special-category data under Article 9 of the GDPR. We process it on the basis of your explicit consent, given when you accept these terms and begin using the Service. You may withdraw that consent at any time by deleting your account.</p>
+<p>Health documents. If you share a medical record, a clinician's letter, a test result, a prescription, or anything else about your health, it is health information: special-category data under the GDPR, and consumer health data under some US state laws. We process it only because you chose to share it, on the basis of your explicit consent, and only to reply to you in that conversation. The AI is instructed not to interpret a diagnosis, comment on treatment or medication, second-guess your clinician, or pronounce on anyone named in the document. Inner Map is not a medical service and does not review, verify or store your records beyond the text read from what you share. A document about you may also be about other people; please share only what you are comfortable with.</p>
 <p>Legal bases for processing: We process your data based on (1) the performance of our contract with you (delivering the app's core functionality), (2) your explicit consent (for special-category data, and for optional features such as notifications), and (3) our legitimate interest in maintaining service stability and security (for usage counters, rate limiting, and crash diagnostics).</p>
 <p>Data Protection Officer: Inner Map has designated a contact for privacy matters at privacy@my-inner-map.com. You can also write to Innermap LLC, 7100 Camino Real, Ste 302, Office 42, Boca Raton, FL 33433, United States.</p>
 <p>Right to lodge a complaint: If you believe we have not handled your data appropriately, you have the right to lodge a complaint with your local data protection authority.</p>
