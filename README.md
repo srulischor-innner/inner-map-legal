@@ -21,6 +21,7 @@ Deployed via **Cloudflare Pages** to https://my-inner-map.com.
 | `.well-known/assetlinks.json` | Android App Link declaration (same role on Android) |
 | `_headers` | Cloudflare Pages config — serves both `.well-known` files as `application/json` |
 | `support.html` | Support page — the App Store requires a reachable one |
+| `app.html` | The share link `my-inner-map.com/app`: sends an iPhone to the App Store and an Android phone to Google Play; anything else sees both links. It has a script, like the sign-in landing page. |
 
 The legal-document HTML files as authored here are standalone — no external
 CSS, JavaScript, fonts, or other dependencies.
