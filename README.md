@@ -22,6 +22,7 @@ Deployed via **Cloudflare Pages** to https://my-inner-map.com.
 | `_headers` | Cloudflare Pages config — serves both `.well-known` files as `application/json` |
 | `support.html` | Support page — the App Store requires a reachable one |
 | `app.html` | The share link `my-inner-map.com/app`: sends an iPhone to the App Store and an Android phone to Google Play; anything else sees both links. It has a script, like the sign-in landing page. |
+| `code.html` | `my-inner-map.com/code`: how to use the code INNERMAP30. iPhone gets one button, which is Apple's offer-code link for the app; Android gets the three taps inside the app, with a drawing. Standalone, no script. Has to change the same day the code, the price or the free time does. |
 
 The legal-document HTML files as authored here are standalone — no external
 CSS, JavaScript, fonts, or other dependencies.
